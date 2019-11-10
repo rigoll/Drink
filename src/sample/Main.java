@@ -59,6 +59,7 @@ public class Main extends Application {
                 }
                 pin01.toggle();
 
+
             }
         });
 
@@ -74,7 +75,9 @@ public class Main extends Application {
                     ex.printStackTrace();
                 }
                 pin02.toggle();
+                button2.setDisable(true);
             }
+
 
 
 
