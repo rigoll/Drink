@@ -1,5 +1,4 @@
 package sample;
-
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
@@ -13,10 +12,10 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
-import java.util.concurrent.TimeUnit;
+import javafx.stage.Stage;;
+import static java.lang.Thread.sleep;
 
 public class Main extends Application {
 
@@ -42,46 +41,34 @@ public class Main extends Application {
         pin02.setShutdownOptions(true, PinState.LOW);
         button1 = new Button("Vin");
         button2 = new Button("Whiskey");
-
-
         buttonx = new Button("Avsluta");
 
 
-        button1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                // Wine for 4 sec
-                pin01.toggle();
-                try {
-                    Thread.sleep(4000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-                pin01.toggle();
-
-
+        button1.setOnTouchPressed(new EventHandler<TouchEvent>() {
+            @Override public void handle(TouchEvent event ) {
+                pin01.high();
             }
+        });
+        button1.setOnTouchReleased(new EventHandler<TouchEvent> () {
+            @Override public void handle(TouchEvent event ) {
+                pin01.low();
+            }
+
         });
 
 
-        button2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-
-                pin02.toggle();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-                pin02.toggle();
-                button2.setDisable(true);
+        button2.setOnTouchPressed(new EventHandler<TouchEvent>() {
+            @Override public void handle(TouchEvent event ) {
+                pin02.high();
+            }
+        });
+        button2.setOnTouchReleased(new EventHandler<TouchEvent> () {
+            @Override public void handle(TouchEvent event ) {
+                pin02.low();
             }
 
+            });
 
-
-
-        });
 
         // Using Button x to close
         buttonx.setOnAction(e -> primaryStage.close());
@@ -89,14 +76,17 @@ public class Main extends Application {
         //Button layout
         StackPane layout = new StackPane();
         layout.getChildren().add(button1);
-        button1.setTranslateX(-70);
+        button1.setTranslateX(-200);
         button1.setTranslateY(20);
+        button1.setMaxSize(100, 100);
         layout.getChildren().add(button2);
         button2.setTranslateX(50);
         button2.setTranslateY(20);
+        button2.setMaxSize(100, 100);
         layout.getChildren().add(buttonx);
-        buttonx.setTranslateX(180);
+        buttonx.setTranslateX(300);
         buttonx.setTranslateY(20);
+        buttonx.setMaxSize(100, 100);
         Scene scene = new Scene(layout, 1000, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
