@@ -1,53 +1,39 @@
 package sample;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
-
-
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.TouchEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;;
-import static java.lang.Thread.sleep;
+import javafx.stage.Stage;
+
+import java.util.concurrent.TimeUnit;
 
 public class Main extends Application {
 
-
-
-
-
-    //Bak bakObj = new Bak();
-    //bakObj.start(Stage.stage);
-
     Button button1;
     Button button2;
-    Button button3;
-    Button button4;
 
 
     Button buttonx;
 
     public static void main(String[] args) {
-    Application.launch(Bak.class, args);    
-
-
+        launch(args);
 
     }
 
     @Override
     public void start(Stage primaryStage) {
-
 
         primaryStage.setTitle("Title of Window");
         final GpioController gpio = GpioFactory.getInstance();
@@ -56,8 +42,9 @@ public class Main extends Application {
         pin01.setShutdownOptions(true, PinState.LOW);
         pin02.setShutdownOptions(true, PinState.LOW);
         button1 = new Button("Vin (Rött)");
-        button2 = new Button("Vin (Vitt)");
-        button3 = new Button("Whiskey)");
+        button2 = new Button("VIn (Vitt)");
+
+
         buttonx = new Button("Avsluta");
 
 
@@ -84,8 +71,7 @@ public class Main extends Application {
                 pin02.low();
             }
 
-            });
-
+        });
 
         // Using Button x to close
         buttonx.setOnAction(e -> primaryStage.close());
@@ -104,6 +90,8 @@ public class Main extends Application {
         buttonx.setTranslateX(300);
         buttonx.setTranslateY(20);
         buttonx.setMaxSize(100, 100);
+
+
         Scene scene = new Scene(layout, 1000, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
