@@ -8,6 +8,7 @@ This project is currently on hold due to cost. Though this iteration is fully wo
 ![IMG_2020111](https://user-images.githubusercontent.com/47412732/101305000-df944d00-3841-11eb-8e88-3e0bf4c762f4.jpg)
 ![IMG_20200108_075055](https://user-images.githubusercontent.com/47412732/101305033-f5097700-3841-11eb-8b2e-d61b98da2421.jpg)
 ![IMG_20191019_151758](https://user-images.githubusercontent.com/47412732/101305064-0a7ea100-3842-11eb-84d8-e311ca19f732.jpg)
+The last picture is the first prototype. The finished design is made out of aluminum.
 
 
 ### Installation and Setup Instructions
